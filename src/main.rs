@@ -3,7 +3,6 @@ use std::fs;
 use std::io::Read;
 use std::process::exit;
 
-
 fn main() {
     let args: Vec<String> = env::args().collect();
     if args.len() != 2 {
@@ -32,7 +31,7 @@ fn main() {
             },
             '<' => {
                 if ptr == 0 {
-                    eprintln!("Attempted to decrement pointer below 0")
+                    eprintln!("Attempted to decrement pointer below 0");
                     exit(2);
                 }
                 ptr -= 1
@@ -65,11 +64,19 @@ fn main() {
                 }
             }
             '.' => print!("{}", memory[ptr] as char),
-            ',' => {std::io::stdin().bytes().next().and_then(|result|result.ok()).map(|byte| byte as char);}
+            ',' => {memory[ptr] = getchar();}
             _ => {}
         }
         pos += 1;
     }
 
     exit(0);
+}
+
+fn getchar() -> u8 {
+    let result = std::io::stdin().bytes().next();
+    if result.is_none() {
+        exit(0);
+    }
+    return result.expect("Failed to read input").expect("Failed to read input (2)");
 }
