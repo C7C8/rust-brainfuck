@@ -1,7 +1,8 @@
 [package]
 name = "rust-brainfuck"
 version = "0.1.0"
-authors = ["Christopher Myers <tothemyers@gmail.com>"]
+authors = ["crmyers <contact@crmyers.dev>"]
+description = "Yet another Brainfuck interpreter"
 edition = "2018"
 license = "GPL-3.0-only"
 
