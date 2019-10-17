@@ -10,7 +10,13 @@ fn main() {
         exit(1);
     }
 
-    let program: String = fs::read_to_string(&args[1]).expect("Could not read from file!");
+    let file = fs::read_to_string(&args[1]);
+    if file.is_err() {
+        eprintln!("Failed to read file: {}", file.err().expect(""));
+        exit(1);
+    }
+
+    let program: String = file.unwrap();
     let mut pos: usize = 0;                     // Position in code
     let mut ptr: usize = 0;                     // Current pointer position
     let mut stack: Vec<usize> = Vec::new();     // Stack (used for [ and ])
@@ -78,5 +84,5 @@ fn getchar() -> u8 {
     if result.is_none() {
         exit(0);
     }
-    return result.expect("Failed to read input").expect("Failed to read input (2)");
+    return result.unwrap().unwrap();
 }
