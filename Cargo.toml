@@ -5,6 +5,7 @@ authors = ["crmyers <contact@crmyers.dev>"]
 description = "Yet another Brainfuck interpreter"
 edition = "2018"
 license = "GPL-3.0-only"
+readme = "README.md"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
